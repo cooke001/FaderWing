@@ -23,21 +23,21 @@ void setup() {
   analogReference(DEFAULT);
   Serial.begin(9600);
 
-  pinMode(4, OUTPUT);
-  pinMode(19, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
+  pinMode(4, OUTPUT); //led1.1
+  pinMode(19, OUTPUT); //LED 2.1
+  pinMode(10, OUTPUT); //led2.2
+  pinMode(11, OUTPUT); //led 2.3
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
-  pinMode(5,INPUT);
-  pinMode(6,INPUT);
-  pinMode(2,INPUT);
-  pinMode(7,INPUT);
-  pinMode(8,INPUT);
-  pinMode(9,INPUT); 
+  pinMode(5,INPUT); //button 1.1
+  pinMode(18,INPUT); //BUTTON 2.1
+  pinMode(6,INPUT); //button 1.2
+  pinMode(7,INPUT); //button 1.3
+  pinMode(8,INPUT); //button2.2
+  pinMode(9,INPUT); //led 2.3
 
-  oled1.begin(&Adafruit128x64, LED_ADDRESS1);
-  oled2.begin(&Adafruit128x64, LED_ADDRESS2);
+  oled1.begin(&Adafruit128x64, LED_ADDRESS2);
+  oled2.begin(&Adafruit128x64, LED_ADDRESS1);
 
   oled1.setFont(Adafruit5x7);
   oled1.clear();
@@ -96,5 +96,41 @@ void loop() {
   Serial.println(val);
   Serial.print(",");
   Serial.println(yeet);
-    Serial.print(",");
+  Serial.print(",");
+  if(digitalRead(18)){
+  digitalWrite(19,HIGH);
+  }
+  else{
+    digitalWrite(19,LOW);
+  }
+  if(digitalRead(5)){
+  digitalWrite(4,HIGH);
+  }
+  else{
+    digitalWrite(4,LOW);
+  }
+  if(digitalRead(8)){
+  digitalWrite(10,HIGH);
+  }
+  else{
+    digitalWrite(10,LOW);
+  }
+ if(digitalRead(9)){
+  digitalWrite(11,HIGH);
+  }
+  else{
+    digitalWrite(11,LOW);
+  }
+ if(digitalRead(6)){
+  digitalWrite(12,HIGH);
+  }
+  else{
+    digitalWrite(12,LOW);
+  }
+   if(digitalRead(7)){
+  digitalWrite(13,HIGH);
+  }
+  else{
+    digitalWrite(13,LOW);
+  } 
 }
